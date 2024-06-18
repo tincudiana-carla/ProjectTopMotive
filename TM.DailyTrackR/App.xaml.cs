@@ -1,7 +1,8 @@
 ﻿namespace TM.DailyTrackR
 {
   using System.Windows;
-  using TM.DailyTrackR.View;
+    using TM.DailyTrackR.Common;
+    using TM.DailyTrackR.View;
   using TM.DailyTrackR.ViewModel;
 
   public partial class App : Application
@@ -10,11 +11,14 @@
     {
       base.OnStartup(e);
 
-      //Register View
+            //Register View
 
-      MainWindow window = new();
-      window.DataContext = new MainWindowViewModel();
-      window.ShowDialog();
+            //MainWindow window = new();
+            //window.DataContext = new MainWindowViewModel();
+            //window.ShowDialog();
+            ViewService.Instance.RegisterView(typeof(MainWindowViewModel),typeof(MainWindow));
+            ViewService.Instance.RegisterView(typeof(AddDataViewModel), typeof(AddDataWindow));
+            ViewService.Instance.ShowDialog(new MainWindowViewModel());
     }
   }
 }

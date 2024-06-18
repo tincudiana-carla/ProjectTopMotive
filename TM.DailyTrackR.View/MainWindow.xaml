@@ -6,8 +6,65 @@
         xmlns:local="clr-namespace:TM.DailyTrackR.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="TM Daily TrackR" Height="450" Width="800">
-  <Grid>
+        Title="TM Daily TrackR" Height="450" Width="800"
+        ResizeMode="CanResize"
+        SizeToContent ="WidthandHeight"
+        >
 
-  </Grid>
+    <Window.Resources>
+        <Style x:Key="servus"
+             TargetType="Button">
+            
+            <Setter Property="Background" Value="Turquoise"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Margin" Value="30"></Setter>
+            <Setter Property="FontWeight" Value="Bold">
+            </Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="DeepSkyBlue" BorderBrush="Bisque" BorderThickness="5" CornerRadius="10" >
+                            <TextBlock Text="Click" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Center">
+                                
+                            </TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+       
+    </Window.Resources>
+    
+    
+    <StackPanel>
+        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}">   
+            
+        </TextBox>
+
+        <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
+
+        </TextBox>
+        
+        <TextBlock Text="{Binding Username}" FontSize="30">
+            
+        </TextBlock>
+
+        <TextBlock Text="{Binding Password}" FontSize="30">
+
+        </TextBlock>
+        <ComboBox ItemsSource="{Binding ListOfNumber}">
+            
+        </ComboBox>
+        <Button Content="{Binding Number}" Command="{Binding IncreaseNumber}">
+            
+        </Button>
+
+        <Button  Content="New Window" Command="{Binding NewWindowCommand}"></Button>
+
+        <Button  Style ="{StaticResource servus}" Content="Delete" Command="{Binding DeleteElementFromIndex}"></Button>
+
+    </StackPanel>
 </Window>
